@@ -14,4 +14,10 @@ public class PostalCode{
 	public String getPostalCode() {
 		return this.postalCode;
 	}
+
+    public boolean equals(Object other) {  //adapted from AddressBook.java
+        return other == this // short circuit if same object
+                || (other instanceof PostalCode // instanceof handles nulls
+                && this.postalCode.equals(((PostalCode) other).postalCode));
+    }
 }

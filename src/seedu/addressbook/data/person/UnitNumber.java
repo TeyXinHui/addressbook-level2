@@ -14,4 +14,10 @@ public class UnitNumber{
 	public String getUnitNumber() {
 		return this.unitNumber;
 	}
+
+	public boolean equals(Object other) {  //adapted from AddressBook.java
+		return other == this // short circuit if same object
+				|| (other instanceof UnitNumber // instanceof handles nulls
+				&& this.unitNumber.equals(((UnitNumber) other).unitNumber));
+	}
 }
