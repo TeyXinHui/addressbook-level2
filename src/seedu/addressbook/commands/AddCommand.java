@@ -60,7 +60,7 @@ public class AddCommand extends Command {
     }
 
     public ReadOnlyPerson getPerson() {
-        return toAdd;
+        return this.toAdd;
     }
 
     @Override

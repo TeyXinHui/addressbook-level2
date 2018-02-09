@@ -112,8 +112,11 @@ public class Main {
             storage.save(addressBook);
             return result;
         } catch (StorageOperationException e) {
-            ui.showToUser("StorageOperationException: Read-Only file cannot be editted.");
-            return new CommandResult("");
+            ui.showToUser("StorageOperationException: Read-Only file cannot be edited.");
+            return new CommandResult(""); //return result;
+        } catch (Exception e) {
+            ui.showToUser(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
