@@ -25,7 +25,7 @@ Please refer to the [Setting up](DeveloperGuide.md#setting-up) section to learn 
 #### Changes from level 1
 What's different from AddressBook-Level1:
 * Support for storing address (`a/`) and tags (`t/`)
-* Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`) 
+* Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`) (`pb/`)
 * View details of a person (`view` : shows non-private details), (`viewall` : shows all details)
 
 ### Viewing help : `help`
@@ -35,7 +35,7 @@ Format: `help`
  
 ### Adding a person: `add`
 Adds a person to the address book<br>
-Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...` 
+Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [p]b/BIRTHDAY [t/TAG]  
  
 > Words in `UPPER_CASE` are the parameters, items in `SQUARE_BRACKETS` are optional, 
 > items with `...` after them can have multiple instances. Order of parameters are fixed. 
@@ -46,8 +46,8 @@ Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
 > Persons can have any number of tags (including 0)
 
 Examples: 
-* `add John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01`
-* `add Betsy Crowe pp/1234567 e/betsycrowe@gmail.com pa/Newgate Prison t/criminal t/friend`
+* `add John Doe p/98765432 e/johnd@gmail.com a/123, John street, #01-01, 829938 b/06/05/1987`
+* `add Betsy Crowe pp/1234567 e/betsycrowe@gmail.com pa/232, Newgate Prison, #09-02, 827492 b/09/08/1890 t/criminal t/friend`
 
 ### Listing all persons : `list`
 Shows a list of all persons in the address book.<br>
