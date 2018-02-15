@@ -17,7 +17,7 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
@@ -50,11 +50,29 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if (hasSameCharacters(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
     }
 
+    /**
+     * Converts the Strings in the String Sets to lower case for comparison, which will allow the search to be case-insensitve.
+     *
+     * @param String set and set2 for searching
+     * @return boolean value of whether there is a subject that has the same name as the input keywords, set
+     */
+    private static boolean hasSameCharacters(Set<String> set, Set<String> set2) {
+        Set<String> setInLowerCase1 = new HashSet<>();
+        Set<String> setInLowerCase2 = new HashSet<>();
+        for (String s: set) {
+            setInLowerCase1.add(s.toLowerCase());
+        }
+        for (String s: set2 ) {
+            setInLowerCase2.add(s.toLowerCase());
+        }
+        return !Collections.disjoint(setInLowerCase1, setInLowerCase2);
+    }
 }
+
