@@ -9,8 +9,6 @@ import java.util.List;
 import org.junit.Test;
 
 public class UtilsTest {
-
-
     @Test
     public void elementsAreUnique() throws Exception {
         // empty list
@@ -42,5 +40,32 @@ public class UtilsTest {
 
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
+    }
+
+    @Test
+    public void isAnyNull() throws Exception {
+        // empty list
+        assertNoNull();
+
+        // at least one object is null
+        assertHasNull(null, 1, null);
+        assertHasNull("", null);
+        assertHasNull("abc", null);
+
+        // all objects null
+        assertHasNull(null, null, null);
+        assertHasNull(null, null);
+
+        // no null objects
+        assertNoNull(1, 2, 3);
+        assertNoNull("a", "b", "c");
+    }
+
+    private void assertHasNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
+
+    private void assertNoNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
     }
 }
