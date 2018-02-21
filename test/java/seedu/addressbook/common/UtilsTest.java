@@ -47,13 +47,13 @@ public class UtilsTest {
     @Test
     private void isAnyNull() throws Exception {
         // empty list
-        assertNoNull();
+        assertHasNull();
 
-        // at least one object is null, but not all
+        // only one object is null
         assertHasNull(null, "abc", 1);
         assertHasNull(null, 1);
-        assertHasNull("", null, "abc", null);
-        assertHasNull("abc", null, null);
+        assertHasNull("", null, "abc");
+        assertHasNull("abc", null);
 
         // all objects are null
         assertHasNull(null, null, null);
@@ -61,11 +61,9 @@ public class UtilsTest {
 
         // there is no null
         assertNoNull("abc", "abc");
-        assertNoNull("abc", "", "abc", "ABC");
-        assertNoNull("", "abc", "a", "abc");
+        assertNoNull("abc", "abc", "ABC");
         assertNoNull(1, new Integer(1));
         assertNoNull(1, 1, new Integer(1));
-        assertNoNull(1, 1);
         assertNoNull(1, "a", "b", 1);
     }
 
